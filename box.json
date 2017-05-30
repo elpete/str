@@ -1,0 +1,38 @@
+{
+    "name":"str",
+    "version":"0.0.0",
+    "author":"Eric Peterson",
+    "location":"elpete/str#v0.0.0",
+    "homepage":"https://github.com/elpete/str",
+    "documentation":"https://github.com/elpete/str",
+    "repository":{
+        "type":"git",
+        "URL":"https://github.com/elpete/str"
+    },
+    "bugs":"https://github.com/elpete/str/issues",
+    "slug":"str",
+    "shortDescription":"A collection of string helper functions",
+    "description":"A collection of string helper functions",
+    "type":"modules",
+    "dependencies":{
+        
+    },
+    "devDependencies":{
+        "coldbox":"^4.3.0+188",
+        "testbox":"^2.4.0+80"
+    },
+    "installPaths":{
+        "testbox":"testbox",
+        "coldbox":"tests/resources/app/coldbox"
+    },
+    "scripts":{
+        "postVersion":"package set location='elpete/str#v`package version`'",
+        "onRelease":"publish",
+        "postPublish":"!git push && !git push --tags"
+    },
+    "ignore":[
+        "**/.*",
+        "test",
+        "tests"
+    ]
+}
