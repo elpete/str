@@ -18,12 +18,10 @@
         
     },
     "devDependencies":{
-        "coldbox":"^4.3.0+188",
         "testbox":"^2.4.0+80"
     },
     "installPaths":{
-        "testbox":"testbox",
-        "coldbox":"tests/resources/app/coldbox"
+        "testbox":"testbox"
     },
     "scripts":{
         "postVersion":"package set location='elpete/str#v`package version`'",
