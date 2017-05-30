@@ -15,7 +15,7 @@ component {
     function studly( str ) {
         return arrayToList( arrayMap( words( str ), function( w ) {
             return capitalize( w );
-        } ), "" );   
+        } ), "" );
     }
 
     function camel( str ) {
@@ -47,8 +47,10 @@ component {
     }
 
     function words( str ) {
-        str = addSpaceBetweenCapitalLetters( str );
-        return listToArray( str, " " );
+        return listToArray(
+            REReplace( addSpaceBetweenCapitalLetters( str ), "[\_\-]", " ", "ALL" ),
+            " "
+        );
     }
 
     private function addSpaceBetweenCapitalLetters( str ) {
@@ -64,8 +66,12 @@ component {
             newString &= mid( str, start, matches.start() - start + 1 ) & " ";
             start = matches.start() + 1;
         }
-        newString &= mid( str, start, len( str ) );
-        return newString;
+
+        if ( newString == "" ) {
+            return str;
+        }
+
+        return newString &= mid( str, start, len( str ) );;
     }
 
 }

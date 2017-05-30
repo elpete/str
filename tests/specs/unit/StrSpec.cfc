@@ -69,12 +69,32 @@ component extends="testbox.system.BaseSpec" {
                     it( "capitalizes after spaces", function() {
                         expect( str.studly( "Coldbox Cfml Framework" ) ).toBeWithCase( "ColdboxCfmlFramework" );
                     } );
+
+                    it( "capitalizes after underscores", function() {
+                        expect( str.studly( "coldbox_c_f_m_l_framework" ) ).toBeWithCase( "ColdboxCFMLFramework" );
+                    } );
+
+                    it( "capitalizes after multiple underscores", function() {
+                        expect( str.studly( "coldbox__cfml___framework" ) ).toBeWithCase( "ColdboxCfmlFramework" );
+                    } );
+
+                    it( "capitalizes after dashes", function() {
+                        expect( str.studly( "coldbox-cfml-framework" ) ).toBeWithCase( "ColdboxCfmlFramework" );
+                    } );
                 } );
 
                 describe( "camel", function() {
                     it( "capitalizes after spaces", function() {
                         expect( str.camel( "Coldbox Cfml Framework" ) ).toBeWithCase( "coldboxCfmlFramework" );
                     } );  
+
+                    it( "capitalizes after underscores", function() {
+                        expect( str.camel( "coldbox_c_f_m_l_framework" ) ).toBeWithCase( "coldboxCFMLFramework" );
+                    } );
+
+                    it( "capitalizes after dashes", function() {
+                        expect( str.camel( "coldbox-cfml-framework" ) ).toBeWithCase( "coldboxCfmlFramework" );
+                    } );
                 } );
 
                 describe( "capitalizeWords", function() {
