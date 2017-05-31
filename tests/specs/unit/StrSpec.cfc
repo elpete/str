@@ -8,17 +8,33 @@ component extends="testbox.system.BaseSpec" {
                 expect( str ).toBeInstanceOf( "root.models.Str" );
             } );
 
-            xdescribe( "truncate", function() {
-                it( "can truncate a string to a certain number of words", function() {
-                    expect( str.truncate( "Eric Peterson", 1 ) ).toBeWithCase( "Eric..." );
-                } );
+            describe( "limit", function() {
+                describe( "limitWords", function() {
+                    it( "can limit a string to a certain number of words", function() {
+                        expect( str.limitWords( "Eric Peterson", 1 ) ).toBeWithCase( "Eric..." );
+                    } );
 
-                it( "can specify a custom delimiter", function() {
-                    expect( str.truncate( "Eric Peterson", 1, "___" ) ).toBeWithCase( "Eric___" );
-                } );
+                    it( "can specify a custom ending", function() {
+                        expect( str.limitWords( "Eric Peterson", 1, "___" ) ).toBeWithCase( "Eric___" );
+                    } );
 
-                it( "returns the full value if it has less words than the limit", function() {
-                    expect( str.truncate( "Eric Peterson", 3 ) ).toBeWithCase( "Eric Peterson" );
+                    it( "returns the full value if it has less words than the limit", function() {
+                        expect( str.limitWords( "Eric Peterson", 3 ) ).toBeWithCase( "Eric Peterson" );
+                    } );
+                } );
+                
+                describe( "limit", function() {
+                    it( "can limit a string to a certain number of characters", function() {
+                        expect( str.limit( "Eric Peterson", 7 ) ).toBeWithCase( "Eric Pe..." );
+                    } );
+
+                    it( "can specify a custom delimiter", function() {
+                        expect( str.limit( "Eric Peterson", 6, "___" ) ).toBeWithCase( "Eric P___" );
+                    } );
+
+                    it( "returns the full value if it has less words than the limit", function() {
+                        expect( str.limit( "Eric Peterson", 20 ) ).toBeWithCase( "Eric Peterson" );
+                    } );
                 } );
             } );
 
@@ -30,10 +46,6 @@ component extends="testbox.system.BaseSpec" {
                 it( "splits based on capital letters", function() {
                     expect( str.words( "ColdBoxIsAwesome" ) ).toBe( [ "Cold", "Box", "Is", "Awesome" ] );
                 } );
-            } );
-
-            xdescribe( "slug", function() {
-                
             } );
 
             describe( "string case conversion", function() {
@@ -62,6 +74,24 @@ component extends="testbox.system.BaseSpec" {
 
                     it( "separates spaces", function() {
                         expect( str.kebab( "Coldbox Cfml Framework" ) ).toBeWithCase( "coldbox-cfml-framework" );
+                    } );
+                } );
+
+                describe( "slug", function() {
+                    it( "it separates capital letters", function() {
+                        expect( str.slug( "ColdboxCfmlFramework" ) ).toBeWithCase( "coldbox-cfml-framework" );
+                    } );
+
+                    it( "separates capital letters in a row", function() {
+                        expect( str.slug( "ColdBoxCFMLFramework" ) ).toBeWithCase( "cold-box-c-f-m-l-framework" );
+                    } );
+
+                    it( "separates spaces", function() {
+                        expect( str.slug( "Coldbox Cfml Framework" ) ).toBeWithCase( "coldbox-cfml-framework" );
+                    } );
+
+                    it( "accepts a custom delimiter", function() {
+                        expect( str.slug( "Coldbox Cfml Framework", "_" ) ).toBeWithCase( "coldbox_cfml_framework" );
                     } );
                 } );
 
@@ -105,7 +135,12 @@ component extends="testbox.system.BaseSpec" {
 
                 describe( "capitalize", function() {
                     it( "capitalizes the first letter of the string", function() {
-                        expect( str.capitalize( "first letter Of a sTrinG" ) ).toBeWithCase( "First letter Of a sTrinG" );
+                        expect( str.capitalize( "first letter Of a sTrinG" ) ).toBeWithCase( "First letter of a string" );
+                    } );
+
+                    it( "can leave the rest of the string in the original case", function() {
+                        expect( str.capitalize( str = "first letter Of a sTrinG", preserveCase = true ) )
+                            .toBeWithCase( "First letter Of a sTrinG" );
                     } );
                 } );
 
@@ -117,7 +152,12 @@ component extends="testbox.system.BaseSpec" {
 
                 describe( "lowercase", function() {
                     it( "lowercases the first letter of the string", function() {
-                        expect( str.lowercase( "First letter Of a sTrinG" ) ).toBeWithCase( "first letter Of a sTrinG" );
+                        expect( str.lowercase( "First letter Of a sTrinG" ) ).toBeWithCase( "first letter of a string" );
+                    } );
+
+                    it( "can leave the rest of the string in the original case", function() {
+                        expect( str.lowercase( str = "First letter Of a sTrinG", preserveCase = true ) )
+                            .toBeWithCase( "first letter Of a sTrinG" );
                     } );
                 } );
             } );

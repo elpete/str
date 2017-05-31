@@ -1,35 +1,35 @@
 component {
 
-    function snake( str ) {
+    function slug( str, delimiter = "-" ) {
         return arrayToList( map( words( str ), function( w ) {
             return lCase( w );
-        } ), "_" );
+        } ), delimiter );
+    }
+
+    function snake( str ) {
+        return slug( str, "_" );
     }
 
     function kebab( str ) {
-        return arrayToList( map( words( str ), function( w ) {
-            return lCase( w );
-        } ), "-" );
+        return slug( str, "-" );
     }
 
     function studly( str ) {
         return arrayToList( map( words( str ), function( w ) {
-            return capitalize( w );
+            return capitalizeWords( w );
         } ), "" );
     }
 
     function camel( str ) {
-        return lowercase( studly( str ) );
+        return lowercase( str = studly( str ), preserveCase = true );
     }
 
     function capitalizeWords( str ) {
-        return arrayToList( map( listToArray( str, " " ), function( s ) {
-            return capitalize( lcase( s ) );
-        } ), " " );
+        return arrayToList( map( listToArray( str, " " ), capitalize ), " " );
     }
 
-    function capitalize( str ) {
-        var strArray = listToArray( str, "" );
+    function capitalize( str, preserveCase = false ) {
+        var strArray = listToArray( preserveCase ? str : lcase( str ), "" );
         strArray[ 1 ] = uCase( strArray[ 1 ] );
         return arrayToList( strArray, "" );
     }
@@ -40,15 +40,33 @@ component {
         } ), " " );
     }
 
-    function lowercase( str ) {
-        var strArray = listToArray( str, "" );
+    function lowercase( str, preserveCase = false ) {
+        var strArray = listToArray( preserveCase ? str : lcase( str ), "" );
         strArray[ 1 ] = lCase( strArray[ 1 ] );
         return arrayToList( strArray, "" );
     }
 
+    function limit( str, limit, end = "..." ) {
+        if ( len( str ) <= limit ) {
+            return str;
+        }
+
+        return left( str, limit ) & end;
+    }
+
+    function limitWords( str, limit, end = "..." ) {
+        var ws = words( str );
+        if ( arrayLen( ws ) <= limit ) {
+            return str;
+        }
+        return arrayToList( arraySlice( ws, 1, limit ), " " ) & end;
+    }
+
     function words( str ) {
         return listToArray(
-            REReplace( addSpaceBetweenCapitalLetters( str ), "[\_\-]", " ", "ALL" ),
+            addSpaceBetweenCapitalLetters(
+                REReplace( str , "[\_\-]", " ", "ALL" )
+            ),
             " "
         );
     }
