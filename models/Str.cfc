@@ -1,19 +1,19 @@
 component {
 
     function snake( str ) {
-        return arrayToList( arrayMap( words( str ), function( w ) {
+        return arrayToList( map( words( str ), function( w ) {
             return lCase( w );
         } ), "_" );
     }
 
     function kebab( str ) {
-        return arrayToList( arrayMap( words( str ), function( w ) {
+        return arrayToList( map( words( str ), function( w ) {
             return lCase( w );
         } ), "-" );
     }
 
     function studly( str ) {
-        return arrayToList( arrayMap( words( str ), function( w ) {
+        return arrayToList( map( words( str ), function( w ) {
             return capitalize( w );
         } ), "" );
     }
@@ -23,7 +23,7 @@ component {
     }
 
     function capitalizeWords( str ) {
-        return arrayToList( arrayMap( listToArray( str, " " ), function( s ) {
+        return arrayToList( map( listToArray( str, " " ), function( s ) {
             return capitalize( lcase( s ) );
         } ), " " );
     }
@@ -35,7 +35,7 @@ component {
     }
 
     function lowercaseWords( str ) {
-        return arrayToList( arrayMap( listToArray( str, " " ), function( s ) {
+        return arrayToList( map( listToArray( str, " " ), function( s ) {
             return lowercase( lcase( s ) );
         } ), " " );
     }
@@ -71,7 +71,15 @@ component {
             return str;
         }
 
-        return newString &= mid( str, start, len( str ) );;
+        return newString & mid( str, start, len( str ) );
+    }
+
+    private function map( arr, callback ) {
+        var newArr = [];
+        for ( var item in arr ) {
+            arrayAppend( newArr, callback( item ) );
+        }
+        return newArr;
     }
 
 }
