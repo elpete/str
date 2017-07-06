@@ -32,5 +32,8 @@
         "**/.*",
         "test",
         "tests"
-    ]
+    ],
+    "testbox":{
+        "runner":"http://127.0.0.1:56271/tests/runner.cfm"
+    }
 }
