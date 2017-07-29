@@ -48,6 +48,16 @@ component extends="testbox.system.BaseSpec" {
                 } );
             } );
 
+            describe( "slice", function() {
+                it( "can slice from a beginning to an end index", function() {
+                    expect( str.slice( "hello", 2, 4 ) ).toBe( "ell" );
+                } );
+
+                it( "slices to the end of a string if no end index is provided", function() {
+                    expect( str.slice( "hello", 2 ) ).toBe( "ello" );
+                } );
+            } );
+
             describe( "string case conversion", function() {
                 describe( "snake", function() {
                     it( "it separates capital letters", function() {

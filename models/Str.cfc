@@ -1,5 +1,12 @@
 component {
 
+    function slice( word, begin, end ) {
+        if ( isNull( end ) ) {
+            end = len( word );
+        }
+        return mid( word, begin, end + 1 - begin );
+    }
+
     function slug( str, delimiter = "-" ) {
         return arrayToList( map( words( str ), function( w ) {
             return lCase( w );
