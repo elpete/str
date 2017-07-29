@@ -1,4 +1,17 @@
-component {
+component singleton {
+
+    /**
+    * @javaloader The JavaLoader class
+    * @javaloader.inject loader@cbjavaloader
+    */
+    function init( required javaloader ) {
+        variables.pluralizer = javaloader.create( "org.atteo.evo.infelctor.English" );
+        return this;
+    }
+
+    function plural( word, count = 0 ) {
+        return pluralizer.plural( word, count );
+    }
 
     function slice( word, begin, end ) {
         if ( isNull( end ) ) {

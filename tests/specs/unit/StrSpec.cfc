@@ -1,7 +1,13 @@
 component extends="testbox.system.BaseSpec" {
+    
     function beforeAll() {
-        variables.str = new root.models.Str();
+        var javaloaderStub = createStub().$(
+            "create",
+            createObject( "java", "org.atteo.evo.inflector.English" )
+        );
+        variables.str = new root.models.Str( javaloaderStub );
     }
+
     function run() {
         describe( "str", function() {
             it( "can be instantiated", function() {
@@ -45,6 +51,19 @@ component extends="testbox.system.BaseSpec" {
 
                 it( "splits based on capital letters", function() {
                     expect( str.words( "ColdBoxIsAwesome" ) ).toBe( [ "Cold", "Box", "Is", "Awesome" ] );
+                } );
+            } );
+
+            describe( "plural", function() {
+                it( "can determine the plural of most words", function() {
+                    expect( str.plural( "word" ) ).toBe( "words" );
+                    expect( str.plural( "glass" ) ).toBe( "glasses" );
+                } );
+
+                it( "accepts a count to return the correct pluralization", function() {
+                    expect( str.plural( "word", 0 ) ).toBe( "words" );
+                    expect( str.plural( "word", 1 ) ).toBe( "word" );
+                    expect( str.plural( "word", 2 ) ).toBe( "words" );
                 } );
             } );
 
@@ -180,4 +199,5 @@ component extends="testbox.system.BaseSpec" {
             } );
         } );
     }
+
 }

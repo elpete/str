@@ -15,6 +15,12 @@ component {
     this.mappings[ "/coldbox" ] = testsPath & "resources/app/coldbox";
     this.mappings[ "/testbox" ] = rootPath & "/testbox";
 
+    this.javaSettings = { 
+        loadPaths = [ "/root/lib" ],
+        loadColdFusionClassPath = true, 
+        reloadOnChange= false
+    };
+
     function onRequestStart(string targetPage) {
         // applicationStop();
     }
