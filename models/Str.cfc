@@ -5,7 +5,7 @@ component singleton {
     * @javaloader.inject loader@cbjavaloader
     */
     function init( required javaloader ) {
-        variables.pluralizer = javaloader.create( "org.atteo.evo.inflector.English" );
+        variables.pluralizer = javaloader.create( "org.atteo.evo.inflector.English" ).init();
         return this;
     }
 
