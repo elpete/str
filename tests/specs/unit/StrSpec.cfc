@@ -58,6 +58,13 @@ component extends="testbox.system.BaseSpec" {
                 } );
             } );
 
+            describe( "startsWith", function() {
+                it( "returns true if a string starts with the substring provided", function() {
+                    expect( str.startsWith( "hello", "hel" ) ).toBeTrue();
+                    expect( str.startsWith( "hello", "hal" ) ).toBeFalse();
+                } );
+            } );
+
             describe( "string case conversion", function() {
                 describe( "snake", function() {
                     it( "it separates capital letters", function() {

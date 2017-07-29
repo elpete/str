@@ -7,6 +7,10 @@ component {
         return mid( word, begin, end + 1 - begin );
     }
 
+    function startsWith( word, substring ) {
+        return left( word, len( substring ) ) == substring;
+    }
+
     function slug( str, delimiter = "-" ) {
         return arrayToList( map( words( str ), function( w ) {
             return lCase( w );
