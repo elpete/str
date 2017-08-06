@@ -1,8 +1,8 @@
 {
     "name":"str",
-    "version":"0.0.0",
+    "version":"1.0.0",
     "author":"Eric Peterson",
-    "location":"elpete/str#v0.0.0",
+    "location":"elpete/str#v1.0.0",
     "homepage":"https://github.com/elpete/str",
     "documentation":"https://github.com/elpete/str",
     "repository":{
