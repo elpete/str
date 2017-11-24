@@ -3,10 +3,6 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 [![Master Branch Build Status](https://img.shields.io/travis/elpete/str/master.svg?style=flat-square&label=master)](https://travis-ci.org/elpete/str)
 
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/TQMfPZtDP7SHs7UgJVGg61uH/elpete/str'>
-  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/TQMfPZtDP7SHs7UgJVGg61uH/elpete/str.svg' />
-</a>
-
 ## A collection of string helper functions
 
 ### Methods
