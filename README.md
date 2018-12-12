@@ -1,6 +1,5 @@
 # str
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 [![Master Branch Build Status](https://img.shields.io/travis/elpete/str/master.svg?style=flat-square&label=master)](https://travis-ci.org/elpete/str)
 
 ## A collection of string helper functions
@@ -218,14 +217,3 @@ str.words( "MyMixed-caseString" );
 
 // [ "My", "Mixed", "case", "String" ]
 ```
-
-## Contributors
-
-Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-| [<img src="https://avatars1.githubusercontent.com/u/2583646?v=4" width="100px;"/><br /><sub>Eric Peterson</sub>](https://github.com/elpete)<br />[💻](https://github.com/elpete/str/commits?author=elpete "Code") [📖](https://github.com/elpete/str/commits?author=elpete "Documentation") [⚠️](https://github.com/elpete/str/commits?author=elpete "Tests") |
-| :---: |
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
