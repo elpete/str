@@ -14,8 +14,8 @@ component singleton {
     }
 
     function slice( word, begin, end ) {
-        if ( isNull( end ) ) {
-            end = len( word );
+        if ( isNull( arguments.end ) ) {
+            arguments.end = len( word );
         }
         return mid( word, begin, end + 1 - begin );
     }
