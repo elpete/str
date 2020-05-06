@@ -2,7 +2,7 @@
     "name":"str",
     "version":"1.0.5",
     "author":"Eric Peterson",
-    "location":"elpete/str#v1.0.5",
+    "location":"forgeboxStorage",
     "homepage":"https://github.com/elpete/str",
     "documentation":"https://github.com/elpete/str",
     "repository":{
@@ -25,7 +25,6 @@
         "cbjavaloader":"modules/cbjavaloader"
     },
     "scripts":{
-        "postVersion":"package set location='elpete/str#v`package version`'",
         "onRelease":"publish",
         "postPublish":"!git push && git push --tags"
     },
