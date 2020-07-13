@@ -1,6 +1,6 @@
 {
     "name":"str",
-    "version":"1.0.6",
+    "version":"1.0.7",
     "author":"Eric Peterson",
     "location":"forgeboxStorage",
     "homepage":"https://github.com/elpete/str",
@@ -21,8 +21,8 @@
         "testbox":"^2.4.0+80"
     },
     "installPaths":{
-        "testbox":"testbox",
-        "cbjavaloader":"modules/cbjavaloader"
+        "testbox":"testbox/",
+        "cbjavaloader":"modules/cbjavaloader/"
     },
     "scripts":{
         "onRelease":"publish",
