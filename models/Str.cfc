@@ -54,7 +54,8 @@ component singleton {
 
     function capitalize( str, preserveCase = false ) {
         var strArray = listToArray( preserveCase ? str : lcase( str ), "" );
-        strArray[ 1 ] = uCase( strArray[ 1 ] );
+        var firstCharacterIndex = reFind( "\w", arguments.str );
+        strArray[ firstCharacterIndex ] = uCase( strArray[ firstCharacterIndex ] );
         return arrayToList( strArray, "" );
     }
 

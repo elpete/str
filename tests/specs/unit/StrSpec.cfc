@@ -1,5 +1,5 @@
 component extends="testbox.system.BaseSpec" {
-    
+
     function beforeAll() {
         var javaloaderStub = createStub().$(
             "create",
@@ -28,7 +28,7 @@ component extends="testbox.system.BaseSpec" {
                         expect( str.limitWords( "Eric Peterson", 3 ) ).toBeWithCase( "Eric Peterson" );
                     } );
                 } );
-                
+
                 describe( "limit", function() {
                     it( "can limit a string to a certain number of characters", function() {
                         expect( str.limit( "Eric Peterson", 7 ) ).toBeWithCase( "Eric Pe..." );
@@ -152,7 +152,7 @@ component extends="testbox.system.BaseSpec" {
                 describe( "camel", function() {
                     it( "capitalizes after spaces", function() {
                         expect( str.camel( "Coldbox Cfml Framework" ) ).toBeWithCase( "coldboxCfmlFramework" );
-                    } );  
+                    } );
 
                     it( "capitalizes after underscores", function() {
                         expect( str.camel( "coldbox_c_f_m_l_framework" ) ).toBeWithCase( "coldboxCFMLFramework" );
@@ -177,6 +177,10 @@ component extends="testbox.system.BaseSpec" {
                     it( "can leave the rest of the string in the original case", function() {
                         expect( str.capitalize( str = "first letter Of a sTrinG", preserveCase = true ) )
                             .toBeWithCase( "First letter Of a sTrinG" );
+                    } );
+
+                    it( "capitalizes the first letter of the string ignoring non letter characters", function() {
+                        expect( str.capitalize( "(first)" ) ).toBeWithCase( "(First)" );
                     } );
                 } );
 
