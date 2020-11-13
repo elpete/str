@@ -25,8 +25,8 @@
         "cbjavaloader":"modules/cbjavaloader/"
     },
     "scripts":{
-        "onRelease":"publish",
-        "postPublish":"!git push && git push --tags"
+        "format":"cfformat run models/**/*.cfc,tests/specs/**/*.cfc --overwrite",
+        "format:check":"cfformat check models/**/*.cfc,tests/specs/**/*.cfc"
     },
     "ignore":[
         "**/.*",
