@@ -158,6 +158,10 @@ component extends="testbox.system.BaseSpec" {
                     it( "capitalizes after dashes", function() {
                         expect( str.camel( "coldbox-cfml-framework" ) ).toBeWithCase( "coldboxCfmlFramework" );
                     } );
+
+                    it( "capitalizes after periods", function() {
+                        expect( str.camel( "coldbox.cfml.framework" ) ).toBeWithCase( "coldboxCfmlFramework" );
+                    } );
                 } );
 
                 describe( "capitalizeWords", function() {

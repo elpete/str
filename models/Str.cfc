@@ -97,7 +97,7 @@ component singleton {
     }
 
     function words( str ) {
-        return listToArray( addSpaceBetweenCapitalLetters( reReplace( str, "[\_\-]", " ", "ALL" ) ), " " );
+        return listToArray( addSpaceBetweenCapitalLetters( reReplace( str, "[\_\-\.]", " ", "ALL" ) ), " " );
     }
 
     private function addSpaceBetweenCapitalLetters( str ) {
