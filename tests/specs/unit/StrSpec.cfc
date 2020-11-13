@@ -1,10 +1,7 @@
 component extends="testbox.system.BaseSpec" {
 
     function beforeAll() {
-        var javaloaderStub = createStub().$(
-            "create",
-            createObject( "java", "org.atteo.evo.inflector.English" )
-        );
+        var javaloaderStub = createStub().$( "create", createObject( "java", "org.atteo.evo.inflector.English" ) );
         variables.str = new root.models.Str( javaloaderStub );
     }
 
@@ -165,18 +162,23 @@ component extends="testbox.system.BaseSpec" {
 
                 describe( "capitalizeWords", function() {
                     it( "capitalizes every word of a sentance", function() {
-                        expect( str.capitalizeWords( "every word Of a senTanCe" ) ).toBeWithCase( "Every Word Of A Sentance" );
+                        expect( str.capitalizeWords( "every word Of a senTanCe" ) ).toBeWithCase(
+                            "Every Word Of A Sentance"
+                        );
                     } );
                 } );
 
                 describe( "capitalize", function() {
                     it( "capitalizes the first letter of the string", function() {
-                        expect( str.capitalize( "first letter Of a sTrinG" ) ).toBeWithCase( "First letter of a string" );
+                        expect( str.capitalize( "first letter Of a sTrinG" ) ).toBeWithCase(
+                            "First letter of a string"
+                        );
                     } );
 
                     it( "can leave the rest of the string in the original case", function() {
-                        expect( str.capitalize( str = "first letter Of a sTrinG", preserveCase = true ) )
-                            .toBeWithCase( "First letter Of a sTrinG" );
+                        expect( str.capitalize( str = "first letter Of a sTrinG", preserveCase = true ) ).toBeWithCase(
+                            "First letter Of a sTrinG"
+                        );
                     } );
 
                     it( "capitalizes the first letter of the string ignoring non letter characters", function() {
@@ -186,7 +188,9 @@ component extends="testbox.system.BaseSpec" {
 
                 describe( "lowercaseWords", function() {
                     it( "lowercases every word of a sentance", function() {
-                        expect( str.lowercaseWords( "every word Of a senTanCe" ) ).toBeWithCase( "every word of a sentance" );
+                        expect( str.lowercaseWords( "every word Of a senTanCe" ) ).toBeWithCase(
+                            "every word of a sentance"
+                        );
                     } );
                 } );
 
@@ -196,8 +200,9 @@ component extends="testbox.system.BaseSpec" {
                     } );
 
                     it( "can leave the rest of the string in the original case", function() {
-                        expect( str.lowercase( str = "First letter Of a sTrinG", preserveCase = true ) )
-                            .toBeWithCase( "first letter Of a sTrinG" );
+                        expect( str.lowercase( str = "First letter Of a sTrinG", preserveCase = true ) ).toBeWithCase(
+                            "first letter Of a sTrinG"
+                        );
                     } );
                 } );
             } );

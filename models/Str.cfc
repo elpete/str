@@ -1,9 +1,9 @@
 component singleton {
 
     /**
-    * @javaloader The JavaLoader class
-    * @javaloader.inject loader@cbjavaloader
-    */
+     * @javaloader The JavaLoader class
+     * @javaloader.inject loader@cbjavaloader
+     */
     function init( required javaloader ) {
         variables.pluralizer = javaloader.create( "org.atteo.evo.inflector.English" ).init();
         return this;
@@ -25,9 +25,12 @@ component singleton {
     }
 
     function slug( str, delimiter = "-" ) {
-        return arrayToList( map( words( str ), function( w ) {
-            return lCase( w );
-        } ), delimiter );
+        return arrayToList(
+            map( words( str ), function( w ) {
+                return lCase( w );
+            } ),
+            delimiter
+        );
     }
 
     function snake( str ) {
@@ -39,9 +42,12 @@ component singleton {
     }
 
     function studly( str ) {
-        return arrayToList( map( words( str ), function( w ) {
-            return capitalizeWords( w );
-        } ), "" );
+        return arrayToList(
+            map( words( str ), function( w ) {
+                return capitalizeWords( w );
+            } ),
+            ""
+        );
     }
 
     function camel( str ) {
@@ -53,20 +59,23 @@ component singleton {
     }
 
     function capitalize( str, preserveCase = false ) {
-        var strArray = listToArray( preserveCase ? str : lcase( str ), "" );
+        var strArray = listToArray( preserveCase ? str : lCase( str ), "" );
         var firstCharacterIndex = reFind( "\w", arguments.str );
         strArray[ firstCharacterIndex ] = uCase( strArray[ firstCharacterIndex ] );
         return arrayToList( strArray, "" );
     }
 
     function lowercaseWords( str ) {
-        return arrayToList( map( listToArray( str, " " ), function( s ) {
-            return lowercase( lcase( s ) );
-        } ), " " );
+        return arrayToList(
+            map( listToArray( str, " " ), function( s ) {
+                return lowercase( lCase( s ) );
+            } ),
+            " "
+        );
     }
 
     function lowercase( str, preserveCase = false ) {
-        var strArray = listToArray( preserveCase ? str : lcase( str ), "" );
+        var strArray = listToArray( preserveCase ? str : lCase( str ), "" );
         strArray[ 1 ] = lCase( strArray[ 1 ] );
         return arrayToList( strArray, "" );
     }
@@ -88,12 +97,7 @@ component singleton {
     }
 
     function words( str ) {
-        return listToArray(
-            addSpaceBetweenCapitalLetters(
-                REReplace( str , "[\_\-]", " ", "ALL" )
-            ),
-            " "
-        );
+        return listToArray( addSpaceBetweenCapitalLetters( reReplace( str, "[\_\-]", " ", "ALL" ) ), " " );
     }
 
     private function addSpaceBetweenCapitalLetters( str ) {
@@ -101,7 +105,7 @@ component singleton {
         var matches = pattern.compile( "[A-Z]" ).matcher( str );
         var newString = "";
         var start = 0;
-        while( matches.find() ) {
+        while ( matches.find() ) {
             if ( start == 0 ) {
                 start = matches.start() + 1;
                 continue;
