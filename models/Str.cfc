@@ -101,24 +101,7 @@ component singleton {
     }
 
     private function addSpaceBetweenCapitalLetters( str ) {
-        var pattern = createObject( "java", "java.util.regex.Pattern" );
-        var matches = pattern.compile( "[A-Z]" ).matcher( str );
-        var newString = "";
-        var start = 0;
-        while ( matches.find() ) {
-            if ( start == 0 ) {
-                start = matches.start() + 1;
-                continue;
-            }
-            newString &= mid( str, start, matches.start() - start + 1 ) & " ";
-            start = matches.start() + 1;
-        }
-
-        if ( newString == "" ) {
-            return str;
-        }
-
-        return newString & mid( str, start, len( str ) );
+        return reReplace( arguments.str, "([A-Z])", " \1", "all" );
     }
 
     private function map( arr, callback ) {
