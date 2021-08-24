@@ -31,7 +31,8 @@
     "ignore":[
         "**/.*",
         "test",
-        "tests"
+        "tests",
+        "str.sublime-project"
     ],
     "testbox":{
         "runner":"http://127.0.0.1:56271/tests/runner.cfm"
