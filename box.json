@@ -9,6 +9,12 @@
         "type":"git",
         "URL":"https://github.com/elpete/str"
     },
+    "license":[
+        {
+            "type":"MIT",
+            "URL":"https://github.com/elpete/str/LICENSE"
+        }
+    ],
     "bugs":"https://github.com/elpete/str/issues",
     "slug":"str",
     "shortDescription":"A collection of string helper functions",
