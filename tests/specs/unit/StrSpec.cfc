@@ -93,6 +93,7 @@ component extends="testbox.system.BaseSpec" {
 
                     it( "separates spaces", function() {
                         expect( str.snake( "Coldbox Cfml Framework" ) ).toBeWithCase( "coldbox_cfml_framework" );
+                        expect( str.snake( "Coldbox CFML Framework" ) ).toBeWithCase( "coldbox_cfml_framework" );
                     } );
                 } );
 
@@ -162,12 +163,21 @@ component extends="testbox.system.BaseSpec" {
                     it( "capitalizes after periods", function() {
                         expect( str.camel( "coldbox.cfml.framework" ) ).toBeWithCase( "coldboxCfmlFramework" );
                     } );
+
+                    it( "formats all uppercase words", () => {
+                        expect( str.camel( "PUBLICATIONS Count" ) ).toBeWithCase( "publicationsCount" );
+                    } );
+
+                    it( "still handles all caps in the middle", () => {
+                        expect( str.camel( "MyURL" ) ).toBeWithCase( "myURL" );
+                        expect( str.camel( "Abstract HTTP Provider" ) ).toBeWithCase( "abstractHttpProvider" );
+                    } );
                 } );
 
                 describe( "capitalizeWords", function() {
-                    it( "capitalizes every word of a sentance", function() {
-                        expect( str.capitalizeWords( "every word Of a senTanCe" ) ).toBeWithCase(
-                            "Every Word Of A Sentance"
+                    it( "capitalizes every word of a sentence", function() {
+                        expect( str.capitalizeWords( "every word Of a senTenCe" ) ).toBeWithCase(
+                            "Every Word Of A Sentence"
                         );
                     } );
                 } );

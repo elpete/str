@@ -24,7 +24,7 @@
         "cbjavaloader":"^2"
     },
     "devDependencies":{
-        "testbox":"^2.4.0+80"
+        "testbox":"^5.1.0+2"
     },
     "installPaths":{
         "testbox":"testbox/",

@@ -97,11 +97,20 @@ component singleton {
     }
 
     function words( str ) {
+        var split = listToArray( arguments.str, " " );
+        if ( arrayLen( split ) > 1 ) {
+            return split;
+        }
         return listToArray( addSpaceBetweenCapitalLetters( reReplace( str, "[\_\-\.]", " ", "ALL" ) ), " " );
     }
 
     private function addSpaceBetweenCapitalLetters( str ) {
-        return reReplace( arguments.str, "([A-Z])", " \1", "all" );
+        return reReplace(
+            arguments.str,
+            "([A-Z])",
+            " \1",
+            "all"
+        );
     }
 
     private function map( arr, callback ) {
